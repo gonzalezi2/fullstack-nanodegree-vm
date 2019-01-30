@@ -1,0 +1,32 @@
+{% extends "_layout.html" %}
+{% block content %}
+<div class="container">
+    <h1>Restaurants</h1>
+    <a href="{{url_for('newRestaurant')}}" class="button">Add New Restaurant</a>
+    <hr>
+      
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li><strong> {{message}} </strong></li>
+          {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %} 
+
+    {% if restaurants %}
+      {% for r in restaurants %}
+        <div class="restaurant">
+          <h2>{{r.name}}</h2>
+          <a href="{{url_for('showMenu', restaurant_id = r.id)}}">View Menu</a> |
+          <a href="{{url_for('editRestaurant', restaurant_id = r.id)}}">Edit</a> |
+          <a href="{{url_for('deleteRestaurant', restaurant_id = r.id)}}">Delete</a>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="message">There are no restaurants available.</div>
+    {% endif %}
+  
+</div>
+{% endblock %}

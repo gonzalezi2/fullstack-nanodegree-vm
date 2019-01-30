@@ -1,0 +1,46 @@
+{% extends "_layout.html" %}
+{% block content %}
+  <div class="container">
+<h1>Edit {{item.name}}</h1>
+
+<form action="{{ url_for('editMenuItem', restaurant_id=restaurant.id, menu_id = item.id)}}" method="POST">
+  <label for="name">Name:</label>
+  <br>
+  <input type="text" size="30" name="name" value="{{item.name}}">
+  <br>
+  <label for="description">Description:</label>
+  <br>
+  <textarea name="description" cols="30" rows="10">{{item.description}}</textarea>
+  <br>
+  <label for="price">Price:</label>
+  <br>
+  <input type="text" name="price" value="{{item.price}}">
+  <br>
+  <label for="course">Course:</label>
+  <br>
+    {% if item.course == 'Entree' %}
+    <input type="radio" value="Entree" name="course" checked> Entree
+    {%else%}    
+    <input type="radio" value="Entree" name="course"> Entree
+    {% endif %}
+    <br>
+    {% if item.course == 'Appetizer' %}
+    <input type="radio" value="Appetizer" name="course" checked> Appetizer
+    {%else%}    
+    <input type="radio" value="Appetizer" name="course"> Appetizer
+    {% endif %}
+    <br>
+    {% if item.course == 'Dessert' %}
+    <input type="radio" value="Dessert" name="course" checked> Dessert
+    {%else%}    
+    <input type="radio" value="Dessert" name="course"> Dessert
+    {% endif %}
+    <br>
+  <button type="submit" class="button">Create</button>
+</form>
+
+<a href="{{url_for('showMenu', restaurant_id = restaurant.id)}}">Cancel</a>
+
+</body>
+</html>
+{% endblock %}

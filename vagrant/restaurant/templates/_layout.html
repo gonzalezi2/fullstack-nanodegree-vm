@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Restaurant App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="container">
+            <a href="{{url_for('showRestaurants')}}"> Restaurant App</a>
+        </div>
+      </nav>
+    </header>
+    <div class="content">
+      {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>
